@@ -44,14 +44,12 @@ int main (int argc, char *argv[])
   echoClient.SetAttribute ("MaxPackets", UintegerValue (15));
   echoClient.SetAttribute ("Interval", TimeValue (Seconds (1.0)));
   
-  // පළවෙනි run එකේදී 1024 තියන්න. දෙවෙනි run එකේදී 512 කරන්න.
   echoClient.SetAttribute ("PacketSize", UintegerValue (1024));
 
   ApplicationContainer clientApps = echoClient.Install (nodes.Get (1));
   clientApps.Start (Seconds (2.0));
   clientApps.Stop (Seconds (20.0));
 
-  // පළවෙනි run එකේදී lab02_1024.tr තියන්න. දෙවෙනි run එකේදී lab02_512.tr කරන්න.
   AsciiTraceHelper ascii;
   pointToPoint.EnableAsciiAll (ascii.CreateFileStream ("lab02_1024.tr"));
 
